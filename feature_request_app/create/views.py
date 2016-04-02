@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def single_page_app(request):
+    return render(request, 'single-page-app.html', {})
