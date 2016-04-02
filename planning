@@ -1,6 +1,6 @@
 DEVELOPERS NOTES:
 
----------------------------------------------------------------------April 2 2016
+---------------------------------------------------------------------Round 1
 purpose: allows user to create feature requests
 
 each request must have the following:
@@ -49,5 +49,10 @@ Layout of app:
         -view requests for clients A, B, C
 
 
+------------------------------------------------------------------Round 2
 
+
+forms:
+    -use a model form and set the attributes in model form definition
+    -while defining the model form, I can set the Knockout bindings
 
