@@ -1,0 +1,22 @@
+#wrapper{
+    margin: auto;
+    overflow-y:auto;
+    width: 66%;
+}
+#left-side, #right-side{
+    width: 50%;
+}
+#left-side{
+    float: left;
+}
+#right-side{
+    float: right;
+}
+
+#create, #view{
+    background-color: #828596;
+    padding:30px;
+}
+#id_title, #id_description{
+    width: 100%
+}

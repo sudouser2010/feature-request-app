@@ -8,7 +8,30 @@
         <link href="/static/css/app-styles.css" rel="stylesheet">
     </head>
     <body>
-        Test
+        <div id="wrapper">
+            <div id="left-side">
+                Create
+                <div id="create">
+                    {{form.title}}
+                    {{form.description}}
+                    {{form.client}}
+                    {{form.priority}}
+                    {{form.target_date}}
+                    {{form.ticket_url}}
+                    {{form.product_area}}
+                    <div id="">Add Feature Request</div>
+                </div>
+            </div>
+            <!-- left-side -->
+            <div id="right-side">
+                View
+                <div id="view">
+                </div>
+            </div>
+            <!-- right-side -->
+
+        </div>
+        <!-- wrapper -->
         <script src="/static/js/app-controller.js"></script>
     </body>
 
