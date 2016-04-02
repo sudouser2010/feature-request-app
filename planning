@@ -1,0 +1,53 @@
+DEVELOPERS NOTES:
+
+---------------------------------------------------------------------April 2 2016
+purpose: allows user to create feature requests
+
+each request must have the following:
+    >>will call model FeatureRequest
+
+    Title: A short, descriptive name of the feature request.
+        >>char, 32
+
+    Description: A long description of the feature request.
+        >>char, 128
+
+    Client: A selection list of clients (use "Client A", "Client B", "Client C")
+        >>a simple dropdown produced by an enumeration of choices
+
+    Client Priority: A numbered priority according to the client (1...n). Client Priority numbers should not repeat for the given client, so if a priority is set on a new feature as "1", then all other feature requests for that client should be reordered.
+        >>this is the most interesting one. When a submission occurs, this data affects the position of all the other ones.
+        >>I should use a unqiue_together meta attribute to ensure the priority and client are truly unique
+        >>option1:
+            -when a submission occurs, some code looks at the requests for a particular client. then it loops through and changes the
+            priority.
+
+        >>option2:
+            -similar to option1 but uses the db to do a lot of the work
+                say x is the new priority and c is the client
+                -a: get priorties less than or equal to x and update them
+                    FeatureRequest.objects.filter(client=c, priority__lte=x).update(priority=F('priority')+1)
+
+                -b: create new FeatureRequest with priority of x and client of c
+
+    Target Date: The date that the client is hoping to have the feature.
+        >>I'll use the frontend date picker
+        >>I'll use the datetime field
+
+    Ticket URL: A field for storing any URL
+        >>use the url field
+
+    Product Area: A selection list of product areas (use 'Policies', 'Billing', 'Claims', 'Reports')
+        >>use an enumeration of choices
+
+
+Layout of app:
+    left side:
+        -submission form
+
+    right side:
+        -view requests for clients A, B, C
+
+
+
+
