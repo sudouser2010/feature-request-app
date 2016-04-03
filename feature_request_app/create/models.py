@@ -36,6 +36,3 @@ class FeatureRequest(models.Model):
     target_date = models.DateField(null=True)
     ticket_url = models.URLField(null=True)
     product_area = models.IntegerField(choices=ProductionAreaChoices, default=0)
-
-    class Meta:
-        unique_together = ('client', 'priority')
