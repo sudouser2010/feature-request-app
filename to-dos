@@ -4,10 +4,16 @@ To Do:
     -get basic django project up and running++
     -create models++
     -create view++
-    -create form
-    -create template
-    -create css
+    -create form++
+    -create template++
+    -create css++
     -create js
+    -install django-rest-framework to deliver data to frontend
+        -update requriements.txt
+    -create basic read-only api that sends an object that contains arrays for each client
+        -modify the list method of api so it does exactly what is needed
+    -on FE verify api works
+    -use api to populate app with data
 
-
+side notes:
     -I will not use docker at first. The overhead is too large and it may not be needed b/c the app is simple.
