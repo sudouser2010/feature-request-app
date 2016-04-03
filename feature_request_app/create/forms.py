@@ -33,12 +33,14 @@ class FeatureRequestForm(forms.ModelForm):
                 optionsValue: 'id',
                 value: selectedClient,
                 optionsAfterRender: setOptionAsDisabled
-                """
+                """,
+                'class': 'left'
             }),
             'priority': forms.NumberInput(attrs={
                 'min': 1,
                 'placeholder': 'Enter Priority',
-                'data-bind': 'value: priority'
+                'data-bind': 'value: priority',
+                'class': 'right'
             }),
             'target_date': forms.DateTimeInput(attrs={
                 'type': 'date',
