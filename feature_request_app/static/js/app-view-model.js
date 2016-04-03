@@ -44,6 +44,16 @@ function AppViewModel(){
     self.url=ko.observable("");
     self.selectedArea=ko.observable(-1);
 
+    self.resetFields = function(){
+        self.title("");
+        self.description("");
+        self.selectedClient(-1);
+        self.priority("");
+        self.date("");
+        self.url("");
+        self.selectedArea(-1);
+    };
+
     self.clients = [
         new OptionItem( 'Select Client', -1, true),
         new OptionItem( 'A', 0, false),
@@ -85,6 +95,7 @@ function AppViewModel(){
             console.log("done");
             self.feedbackModal.showSuccess();
             self.feedbackModal.showModal();
+            self.resetFields();
 		}).fail(function(result) {
             console.log("fail");
             self.feedbackModal.showFailure();
