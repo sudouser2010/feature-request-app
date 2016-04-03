@@ -63,3 +63,25 @@ input,select, textarea{
 #id_priority:focus{
     background-color:antiquewhite;
 }
+#accept-button{
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #151414;
+    font-size: 24px;
+    width: 50%;
+    text-align: center;
+    font-weight: 500;
+    padding: 4px;
+    margin: auto;
+    color: white;
+}
+#accept-button:hover{
+    background-color: #292828;
+}
+#feedback-modal .modal-content{
+    top: 100px;
+}
+#feedback-modal .modal-title{
+    text-align: center;
+    font-size: 24px;
+}

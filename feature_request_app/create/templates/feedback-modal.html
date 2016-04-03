@@ -1,0 +1,31 @@
+<!-- Feedback Modal -->
+<div class="modal fade" id="feedback-modal" tabindex="-1" role="dialog" aria-labelledby="feedback-label" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" data-bind="text: feedbackModal.title">
+					Status
+				</h4>
+			</div>
+			<!-- title -->
+
+			<div class="modal-body">
+
+				<div class="message" data-bind="text: feedbackModal.message">
+                    Message
+				</div>
+                <div id="accept-button" data-bind="click: feedbackModal.closeModal"> Okay </div>
+			</div>
+			<!-- modal-body -->
+
+		</div>
+		<!-- modal-content-->
+
+	</div>
+	<!--modal-dialog-->
+</div>
+<!-- Feedback Modal -->

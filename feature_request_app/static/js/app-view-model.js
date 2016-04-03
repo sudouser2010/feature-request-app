@@ -8,6 +8,31 @@ function OptionItem(name, id, disable){
     self.disabled = ko.observable(disable);
 };
 
+function FeedbackModal(){
+    var self = this;
+
+    self.modal = "#feedback-modal";
+    self.title=ko.observable("");
+    self.message=ko.observable("");
+
+	self.showModal = function(){
+		$(self.modal).modal('show');
+	};
+	self.closeModal = function(){
+		$(self.modal).modal('hide');
+	};
+
+    self.showSuccess = function(){
+        self.title("New Feature Request Created !");
+        self.message("");
+    };
+    self.showFailure = function(){
+        self.title("Invalid Input");
+        self.message("");
+    };
+
+};
+
 function AppViewModel(){
     var self = this;
 
@@ -36,6 +61,8 @@ function AppViewModel(){
         ko.applyBindingsToNode(option, {disable: item.disabled}, item);
     };
 
+    self.feedbackModal = new FeedbackModal();
+
     self.createFeatureRequest = function(){
         var newClientData = {
             'title' : self.title(),
@@ -56,11 +83,13 @@ function AppViewModel(){
 
 		$.ajax(options).done(function(result) {
             console.log("done");
-		}).fail(function() {
+            self.feedbackModal.showSuccess();
+            self.feedbackModal.showModal();
+		}).fail(function(result) {
             console.log("fail");
-		}).always(function() {
-
-		});
+            self.feedbackModal.showFailure();
+            self.feedbackModal.showModal();
+		})
 
     }
 };

@@ -21,10 +21,10 @@
                     {{form.target_date}}
                     {{form.ticket_url}}
                     {{form.product_area}}
-
                     <div id="add-feature" data-bind="click: createFeatureRequest">
                         Add Feature Request
                     </div>
+
                 </div>
             </div>
             <!-- left-side -->
@@ -39,6 +39,8 @@
 
         </div>
         <!-- wrapper -->
+
+        {% include "feedback-modal.html" %}
 
         <script src="/static/js/jquery2.2.2.js"></script>
         <script src="/static/js/app-view-model.js"></script>
