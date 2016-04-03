@@ -7,16 +7,23 @@
     width: 50%;
     text-align:center;
 }
-#left-side{
+.left{
     float: left;
 }
-#right-side{
+.right{
     float: right;
 }
 
 #create, #view{
     background-color: #828596;
     padding:30px;
+    height:394px;
+}
+#create{
+    margin-right:5px;
+}
+#view{
+    margin-left:5px;
 }
 #id_title, #id_description, #id_target_date,
 #id_ticket_url, #id_product_area{
@@ -25,13 +32,29 @@
 #add-feature{
     font-size: 20px;
     padding: 10px;
-    background-color: azure;
+    background-color: #CAE6FF;
     border-radius: 3px;
     cursor:pointer;
 }
-input{
+#add-feature:hover{
+    background-color:#D7EBFD;
+}
+input,select{
     margin-bottom: 12px;
     border-radius: 2px;
     border: none;
     padding: 8px;
+}
+#id_priority{
+    width:114px;
+}
+#id_title:hover, #id_description:hover, #id_target_date:hover,
+#id_ticket_url:hover, #id_product_area:hover, #id_client:hover,
+#id_priority:hover{
+    background-color:azure;
+}
+#id_title:focus, #id_description:focus, #id_target_date:focus,
+#id_ticket_url:focus, #id_product_area:focus, #id_client:focus,
+#id_priority:focus{
+    background-color:antiquewhite;
 }
