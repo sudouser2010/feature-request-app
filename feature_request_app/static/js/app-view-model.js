@@ -26,9 +26,21 @@ function FeedbackModal(){
         self.title("New Feature Request Created !");
         self.message("");
     };
-    self.showFailure = function(){
+    self.showFailure = function(response){
         self.title("Invalid Input");
-        self.message("");
+        var message = self.renderMessage(response);
+        self.message(message);
+    };
+    self.renderMessage = function(response){
+        var messageHeader = "Please check the following fields: <br>";
+        var messageErrors = [];
+
+        for (var key in response){
+          if (response.hasOwnProperty(key)) {
+              messageErrors.push(key);
+          }
+        }
+        return messageHeader + messageErrors.join(", ");
     };
 
 };
@@ -98,7 +110,7 @@ function AppViewModel(){
             self.resetFields();
 		}).fail(function(result) {
             console.log("fail");
-            self.feedbackModal.showFailure();
+            self.feedbackModal.showFailure(result.responseJSON);
             self.feedbackModal.showModal();
 		})
 
