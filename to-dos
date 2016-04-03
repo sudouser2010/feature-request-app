@@ -16,6 +16,9 @@ To Do:
             >>it groups data by client type
     -on FE verify api works ++
     -use api to populate app with data
+    -display errors in ui
+    -reset form when success
+
 
 side notes:
     -I will not use docker at first. The overhead is too large and it may not be needed b/c the app is simple.

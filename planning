@@ -1,5 +1,48 @@
 DEVELOPERS NOTES:
 
+
+
+
+
+
+-----------------------------------------------------------------------------------------Round 3
+
+
+
+
+------------------------------------------------------------------Round 2
+Approach to rendering form:
+    option1: [favors Django's paradigm]
+        -use django to render form in template
+        -the max priority is dependent on the client. So whenever the client changes,
+        an ajax call will occur to get the max priority.
+        -with this approach, the bindings are handled by jquery and form generation by Django
+
+    option2: [favors Knockout's paradigm]
+        -do ajax call at beginning to get all client data. Use data to build form with KO loop
+        -the data of all clients can be loaded initially
+        -when the client is changed, there's no need for an ajax call
+        -with this approach, the bindings and form generation are handled by KO
+        -maybe use open source library such as djano-knockout-modeler
+
+    options3: [combining KO and Django paradigm]
+        -django renders form in template
+        -use a model form and set the KO bindings as attributes in model form definition
+        -when client is changed, an ajax call happens to get the new max priority
+        -with this approach, the bindings are handled by KO and form generation by Django
+
+    options4: [combining KO and Django paradigm, 1 ajax call]
+        -django renders form in template
+        -use a model form and set the KO bindings as attributes in model form definition
+        -when client is changed, the max client is obtained from view model
+        -one request is done at the beginning to load initial data
+        -with this approach, the bindings are handled by KO and form generation by Django
+
+    *the best way is with option4 b/c only one ajax call is done which gets all the client data
+    all at once.
+
+    *I'll use option4 b/c it offers the most flexibility and also gets all the client data at once
+
 ---------------------------------------------------------------------Round 1
 purpose: allows user to create feature requests
 
@@ -48,30 +91,3 @@ Layout of app:
     right side:
         -view requests for clients A, B, C
 
-
-------------------------------------------------------------------Round 2
-
-
-Approach to rendering form:
-    option1: [favors Django's paradigm]
-        -use django to render form in template
-        -the max priority is dependent on the client. So whenever the client changes,
-        an ajax call will occur to get the max priority.
-        -with this approach, the bindings are handled by jquery and form generation by Django
-
-    option2: [favors Knockout's paradigm]
-        -do ajax call at beginning to get all client data. Use data to build form with KO loop
-        -the data of all clients can be loaded initially
-        -when the client is changed, there's no need for an ajax call
-        -with this approach, the bindings and form generation are handled by KO
-        -maybe use open source library such as djano-knockout-modeler
-
-    options3: [combining KO and Django paradigm]
-        -django renders form in template
-        -use a model form and set the KO bindings as attributes in model form definition
-        -when client is changed, an ajax call happens to get the new max priority
-        -with this approach, the bindings are handled by KO and form generation by Django
-
-
-    *the best way is with option2 b/c only one ajax call is done which gets all the client data
-    all at once.
