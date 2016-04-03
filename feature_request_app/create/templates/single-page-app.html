@@ -10,20 +10,23 @@
     </head>
     <body>
         <div id="wrapper" class="row">
+
             <div id="left-side" class="left">
                 <h1>Create</h1>
                 <div id="create">
-                    <input id="id_title" maxlength="32" name="title" placeholder="Enter Title" type="text">
-                    <input id="id_description" maxlength="128" name="description" placeholder="Enter Description" type="text">
+                    {{form.title}}
+                    {{form.description}}
                     <span class="left">Client &nbsp; {{form.client}}</span>
                     <span class="right">Priority &nbsp; {{form.priority}}</span>
-                    <input id="id_target_date" name="target_date" placeholder="Enter Target Date" type="text">
-                    <input id="id_ticket_url" maxlength="200" name="ticket_url" placeholder="Enter Ticket URL" type="text">
+                    {{form.target_date}}
+                    {{form.ticket_url}}
                     {{form.product_area}}
                     <div id="add-feature">Add Feature Request</div>
                 </div>
             </div>
             <!-- left-side -->
+
+
             <div id="right-side" class="right">
                 <h1>View</h1>
                 <div id="view">
@@ -33,6 +36,7 @@
 
         </div>
         <!-- wrapper -->
+
         <script src="/static/js/jquery2.2.2.js"></script>
         <script src="/static/js/app-controller.js"></script>
         <script src="/static/js/bootstrap.min.js"></script>
