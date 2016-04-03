@@ -15,7 +15,7 @@ class FeatureRequestViewset(viewsets.ModelViewSet):
         for client in FeatureRequest.ClientChoices:
             client_data = FeatureRequest.objects.filter(
                 client=client[0]
-            ).values()
+            ).order_by('priority').values()
             data[client[1]] = client_data
         return Response(data)
 
