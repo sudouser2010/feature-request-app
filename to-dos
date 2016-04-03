@@ -8,9 +8,10 @@ To Do:
     -create template++
     -create css++
     -create js
-    -install django-rest-framework to deliver data to frontend
+    -install django-rest-framework to deliver data to frontend++
         -update requriements.txt
     -create basic read-only api that sends an object that contains arrays for each client
+        -change view app to data. It's a better name b/c it'll be used to deliver data
         -modify the list method of api so it does exactly what is needed
     -on FE verify api works
     -use api to populate app with data
