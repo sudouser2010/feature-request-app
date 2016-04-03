@@ -16,16 +16,16 @@ class FeatureRequest(models.Model):
         REPORTS = 3
 
     CLIENT_CHOICES = (
-        (CLIENT.A, 'a'),
-        (CLIENT.B, 'b'),
-        (CLIENT.C, 'c'),
+        (CLIENT.A, 'A'),
+        (CLIENT.B, 'B'),
+        (CLIENT.C, 'C'),
     )
 
     PRODUCTION_AREA_CHOICES = (
-        (PRODUCTION_AREA.POLICIES, 'policies'),
-        (PRODUCTION_AREA.BILLING, 'billing'),
-        (PRODUCTION_AREA.CLAIMS, 'claims'),
-        (PRODUCTION_AREA.REPORTS, 'reports'),
+        (PRODUCTION_AREA.POLICIES, 'Policies'),
+        (PRODUCTION_AREA.BILLING, 'Billing'),
+        (PRODUCTION_AREA.CLAIMS, 'Claims'),
+        (PRODUCTION_AREA.REPORTS, 'Reports'),
     )
 
     title = models.CharField(max_length=32, null=True)
