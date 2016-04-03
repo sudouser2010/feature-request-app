@@ -52,7 +52,26 @@ Layout of app:
 ------------------------------------------------------------------Round 2
 
 
-forms:
-    -use a model form and set the attributes in model form definition
-    -while defining the model form, I can set the Knockout bindings
+Approach to rendering form:
+    option1: [favors Django's paradigm]
+        -use django to render form in template
+        -the max priority is dependent on the client. So whenever the client changes,
+        an ajax call will occur to get the max priority.
+        -with this approach, the bindings are handled by jquery and form generation by Django
 
+    option2: [favors Knockout's paradigm]
+        -do ajax call at beginning to get all client data. Use data to build form with KO loop
+        -the data of all clients can be loaded initially
+        -when the client is changed, there's no need for an ajax call
+        -with this approach, the bindings and form generation are handled by KO
+        -maybe use open source library such as djano-knockout-modeler
+
+    options3: [combining KO and Django paradigm]
+        -django renders form in template
+        -use a model form and set the KO bindings as attributes in model form definition
+        -when client is changed, an ajax call happens to get the new max priority
+        -with this approach, the bindings are handled by KO and form generation by Django
+
+
+    *the best way is with option2 b/c only one ajax call is done which gets all the client data
+    all at once.
