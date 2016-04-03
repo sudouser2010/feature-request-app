@@ -26,10 +26,6 @@ class FeatureRequestForm(forms.ModelForm):
                 'placeholder': 'Enter Description',
                 'data-bind': 'value: description'
             }),
-            'target_date': forms.DateTimeInput(attrs={
-                'type': 'date',
-                'data-bind': 'value: date'
-            }),
             'client': forms.Select(attrs={
                 'data-bind': """
                 options: clients,
@@ -44,8 +40,21 @@ class FeatureRequestForm(forms.ModelForm):
                 'placeholder': 'Enter Priority',
                 'data-bind': 'value: priority'
             }),
+            'target_date': forms.DateTimeInput(attrs={
+                'type': 'date',
+                'data-bind': 'value: date'
+            }),
             'ticket_url': forms.TextInput(attrs={
                 'placeholder': 'Enter Ticket URL',
                 'data-bind': 'value: url'
+            }),
+            'product_area': forms.Select(attrs={
+                'data-bind': """
+                options: productArea,
+                optionsText: 'name',
+                optionsValue: 'id',
+                value: 0,
+                optionsAfterRender: setOptionAsDisabled
+                """
             }),
         }
