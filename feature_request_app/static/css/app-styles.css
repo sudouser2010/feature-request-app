@@ -17,7 +17,7 @@
 #create, #view{
     background-color: #828596;
     padding:30px;
-    height:394px;
+    height:410px;
 }
 #create{
     margin-right:5px;
@@ -47,6 +47,10 @@ input,select{
 }
 #id_priority{
     width:114px;
+}
+#id_description{
+    height:70px;
+    resize: none;
 }
 #id_title:hover, #id_description:hover, #id_target_date:hover,
 #id_ticket_url:hover, #id_product_area:hover, #id_client:hover,
