@@ -17,7 +17,7 @@
 #create, #view{
     background-color: #828596;
     padding:30px;
-    height:410px;
+    height:430px;
 }
 #create{
     margin-right:5px;
@@ -39,7 +39,7 @@
 #add-feature:hover{
     background-color:#D7EBFD;
 }
-input,select{
+input,select, textarea{
     margin-bottom: 12px;
     border-radius: 2px;
     border: none;
