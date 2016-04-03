@@ -5,6 +5,7 @@
 }
 #left-side, #right-side{
     width: 50%;
+    text-align:center;
 }
 #left-side{
     float: left;
@@ -17,6 +18,20 @@
     background-color: #828596;
     padding:30px;
 }
-#id_title, #id_description{
+#id_title, #id_description, #id_target_date,
+#id_ticket_url, #id_product_area{
     width: 100%
+}
+#add-feature{
+    font-size: 20px;
+    padding: 10px;
+    background-color: azure;
+    border-radius: 3px;
+    cursor:pointer;
+}
+input{
+    margin-bottom: 12px;
+    border-radius: 2px;
+    border: none;
+    padding: 8px;
 }
