@@ -9,23 +9,23 @@
         <link href="/static/css/app-styles.css" rel="stylesheet">
     </head>
     <body>
-        <div id="wrapper">
-            <div id="left-side">
-                Create
+        <div id="wrapper" class="row">
+            <div id="left-side" class="left">
+                <h1>Create</h1>
                 <div id="create">
-                    {{form.title}}
-                    {{form.description}}
-                    <span>Client{{form.client}}</span>
-                    <span>Priority{{form.priority}}</span>
-                    {{form.target_date}}
-                    {{form.ticket_url}}
+                    <input id="id_title" maxlength="32" name="title" placeholder="Enter Title" type="text">
+                    <input id="id_description" maxlength="128" name="description" placeholder="Enter Description" type="text">
+                    <span class="left">Client &nbsp; {{form.client}}</span>
+                    <span class="right">Priority &nbsp; {{form.priority}}</span>
+                    <input id="id_target_date" name="target_date" placeholder="Enter Target Date" type="text">
+                    <input id="id_ticket_url" maxlength="200" name="ticket_url" placeholder="Enter Ticket URL" type="text">
                     {{form.product_area}}
                     <div id="add-feature">Add Feature Request</div>
                 </div>
             </div>
             <!-- left-side -->
-            <div id="right-side">
-                View
+            <div id="right-side" class="right">
+                <h1>View</h1>
                 <div id="view">
                 </div>
             </div>
