@@ -21,7 +21,10 @@
                     {{form.target_date}}
                     {{form.ticket_url}}
                     {{form.product_area}}
-                    <div id="add-feature">Add Feature Request</div>
+
+                    <div id="add-feature" data-bind="click: createFeatureRequest">
+                        Add Feature Request
+                    </div>
                 </div>
             </div>
             <!-- left-side -->

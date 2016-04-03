@@ -1,7 +1,8 @@
 #wrapper{
     margin: auto;
     overflow-y:auto;
-    width: 66%;
+    min-width: 902px;
+    width: 902px
 }
 #left-side, #right-side{
     width: 50%;

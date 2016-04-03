@@ -31,7 +31,7 @@ class FeatureRequestForm(forms.ModelForm):
                 options: clients,
                 optionsText: 'name',
                 optionsValue: 'id',
-                value: 0,
+                value: selectedClient,
                 optionsAfterRender: setOptionAsDisabled
                 """
             }),
@@ -53,7 +53,7 @@ class FeatureRequestForm(forms.ModelForm):
                 options: productArea,
                 optionsText: 'name',
                 optionsValue: 'id',
-                value: 0,
+                value: selectedArea,
                 optionsAfterRender: setOptionAsDisabled
                 """
             }),
