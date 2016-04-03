@@ -9,4 +9,4 @@ def single_page_app(request):
     if form.is_valid():
         pass
 
-    return render(request, 'single-page-app.html', {'form':form})
+    return render(request, 'single-page-app.html', {'form': form})
