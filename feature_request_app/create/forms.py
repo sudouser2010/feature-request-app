@@ -19,8 +19,8 @@ class FeatureRequestForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Enter Title'}),
-            'description': forms.TextInput(attrs={'placeholder': 'Enter Description'}),
-            'target_date': forms.TextInput(attrs={'placeholder': 'Enter Target Date'}),
+            'description': forms.Textarea(attrs={'placeholder': 'Enter Description'}),
+            'target_date': forms.DateTimeInput(attrs={'type': 'date'}),
             'priority': forms.NumberInput(attrs={'min': 1, 'placeholder': 'Enter Priority'}),
             'ticket_url': forms.TextInput(attrs={'placeholder': 'Enter Ticket URL'}),
             }
