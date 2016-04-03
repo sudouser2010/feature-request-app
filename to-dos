@@ -15,9 +15,10 @@ To Do:
         -modify the list method of api so it does exactly what is needed
             >>it groups data by client type
     -on FE verify api works ++
-    -use api to populate app with data when app loads
     -display errors in ui++
     -reset form when success++
+    -use api to populate app with data when app loads
+
 
 
 side notes:
