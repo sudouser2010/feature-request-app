@@ -8,6 +8,18 @@ function OptionItem(name, id, disable){
     self.disabled = ko.observable(disable);
 };
 
+function Client(title, desc, client, priority, date, url, area){
+    var self = this;
+
+    self.title = title;
+    self.description = desc;
+    self.client = client;
+    self.priority = priority;
+    self.targetDate = date;
+    self.ticketURL = url;
+    self.productArea = area;
+};
+
 function FeedbackModal(){
     var self = this;
 
@@ -56,6 +68,9 @@ function AppViewModel(){
     self.url=ko.observable("");
     self.selectedArea=ko.observable(-1);
 
+    self.api = document.location.origin + "/api/feature-requests/",
+    self.clientData = ko.observableArray();
+
     self.resetFields = function(){
         self.title("");
         self.description("");
@@ -79,7 +94,7 @@ function AppViewModel(){
         new OptionItem( 'Claims', 2, false),
         new OptionItem( 'Reports', 3, false),
     ];
-    self.setOptionAsDisabled = function(option, item) {
+    self.setOptionAsDisabled = function(option, item){
         ko.applyBindingsToNode(option, {disable: item.disabled}, item);
     };
 
@@ -98,7 +113,7 @@ function AppViewModel(){
 
 		var options = {
 			type: "POST",
-			url: document.location.origin + "/api/feature-requests/",
+			url: self.api,
 			timeout: 700,
 			data: newClientData
 		};
@@ -115,6 +130,55 @@ function AppViewModel(){
 		})
 
     }
+
+    self.getFeatureRequests = function(){
+
+		var options = {
+			type: "GET",
+			url: self.api,
+			timeout: 700,
+		};
+
+		$.ajax(options).done(function(result) {
+            console.log("done");
+            self.populateViewModel(result);
+		}).fail(function(result) {
+            console.log("fail");
+		})
+
+    };
+
+    self.populateViewModel = function(result){
+        /*
+         * Use results from api to build observable of client data
+         */
+        for (var clientType in result){
+            if (result.hasOwnProperty(clientType)){
+
+                var clientTypeData = result[clientType];
+
+                for (var clientDatum in clientTypeData){
+                    if (clientTypeData.hasOwnProperty(clientDatum)){
+
+                        var client = clientTypeData[clientDatum];
+                        self.clientData.push(
+                            new Client(
+                                client.title,
+                                client.description,
+                                client.client,
+                                client.priority,
+                                client.target_date,
+                                client.ticket_url,
+                                client.product_area
+                            )
+                        );
+                    }
+                }
+            }
+        }
+    };
+
+    self.getFeatureRequests();
 };
 
 var vm = new AppViewModel();

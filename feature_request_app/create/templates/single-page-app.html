@@ -14,17 +14,7 @@
             <div id="left-side" class="left">
                 <h1>Create</h1>
                 <div id="create">
-                    {{form.title}}
-                    {{form.description}}
-                    {{form.client}}
-                    {{form.priority}}
-                    {{form.target_date}}
-                    {{form.ticket_url}}
-                    {{form.product_area}}
-                    <div id="add-feature" data-bind="click: createFeatureRequest">
-                        Add Feature Request
-                    </div>
-
+                    {% include "left-side-form.html" %}
                 </div>
             </div>
             <!-- left-side -->
@@ -33,6 +23,7 @@
             <div id="right-side" class="right">
                 <h1>View</h1>
                 <div id="view">
+                    {% include "right-side-table.html" %}
                 </div>
             </div>
             <!-- right-side -->

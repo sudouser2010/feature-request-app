@@ -25,6 +25,8 @@
 }
 #view{
     margin-left:5px;
+    overflow: auto;
+    padding: 8px;
 }
 #id_title, #id_description, #id_target_date,
 #id_ticket_url, #id_product_area{
