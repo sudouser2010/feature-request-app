@@ -24,7 +24,7 @@ class FeatureRequestSerializer(serializers.ModelSerializer):
             ).count()
             if data['priority'] > number_of_clients_for_type+1:
                 client = FeatureRequest.ClientChoices[data['client']][1]
-                message = 'Priority can not exceed number of client {}'.format(client)
+                message = 'Priority can not exceed number of clients {}'.format(client)
                 raise serializers.ValidationError(message)
 
         return data
