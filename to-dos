@@ -22,9 +22,11 @@ To Do:
     -use populated data to render table on rightside of app ++
     -don't create drop down filter on right side. It's not needed anymore++
         -it's best to see all of the feature request types
-    -deploy demo on server
+    -deploy demo on server ++
+    -create docker file ++
     -update readme
 
 
 side notes:
-    -I will not use docker at first. The overhead is too large and it may not be needed b/c the app is simple.
+    -I will not use docker at first. The overhead is too large and it may not be needed b/c the app is simple. ++
+    >>I ended up using docker b/c it increased the code's portability.
