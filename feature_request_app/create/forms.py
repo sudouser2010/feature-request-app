@@ -39,7 +39,7 @@ class FeatureRequestForm(forms.ModelForm):
             'priority': forms.NumberInput(attrs={
                 'min': 1,
                 'placeholder': 'Enter Priority',
-                'data-bind': 'value: priority',
+                'data-bind': 'attr: {max: maxPriority}, value: priority',
                 'class': 'right'
             }),
             'target_date': forms.DateTimeInput(attrs={
