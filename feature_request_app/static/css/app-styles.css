@@ -94,3 +94,6 @@ input,select, textarea{
     margin-bottom: 12px;
     text-align: center;
 }
+table{
+    font-size:11px;
+}
