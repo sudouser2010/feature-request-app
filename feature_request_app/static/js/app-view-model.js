@@ -26,6 +26,12 @@ function ClientMaxCounter(){
     self.A=ko.observable(1);
     self.B=ko.observable(1);
     self.C=ko.observable(1);
+
+    self.resetFields = function(){
+        self.A(1);
+        self.B(1);
+        self.C(1);
+    };
 };
 
 function FeedbackModal(){
@@ -106,6 +112,8 @@ function AppViewModel(){
         self.date("");
         self.url("");
         self.selectedArea(-1);
+        self.clientData([]);
+        self.clientMaxCounter.resetFields();
     };
 
     self.clients = [
@@ -121,6 +129,11 @@ function AppViewModel(){
         new OptionItem( 'Claims', 2, false),
         new OptionItem( 'Reports', 3, false),
     ];
+    self.clientTranslation = {0:'A', 1:'B', 2:'C'};
+    self.productAreaTranslation = {
+            0:'Policies', 1:'Billing',
+            2:'Claims', 3:'Reports'
+        };
     self.setOptionAsDisabled = function(option, item){
         ko.applyBindingsToNode(option, {disable: item.disabled}, item);
     };
@@ -148,6 +161,7 @@ function AppViewModel(){
             self.feedbackModal.showSuccess();
             self.feedbackModal.showModal();
             self.resetFields();
+            self.getFeatureRequests();
 		}).fail(function(result) {
             console.log("fail");
             self.feedbackModal.showFailure(result.responseJSON);
@@ -173,15 +187,32 @@ function AppViewModel(){
 
     };
 
+    self.incrementClientCounter = function(client){
+        if(client===0){
+            self.clientMaxCounter.A(self.clientMaxCounter.A()+1)
+        }else if(client===1){
+            self.clientMaxCounter.B(self.clientMaxCounter.B()+1)
+        }else if(client===2){
+            self.clientMaxCounter.C(self.clientMaxCounter.C()+1)
+        }
+    };
+    self.addNewClient = function(client){
+        self.clientData.push(
+            new Client(
+                client.title,
+                client.description,
+                self.clientTranslation[client.client],
+                client.priority,
+                client.target_date,
+                client.ticket_url,
+                self.productAreaTranslation[client.product_area]
+            )
+        );
+    };
     self.populateViewModel = function(result){
         /*
          * Use results from api to build observable of client data
          */
-        var clientTranslation = {0:'A', 1:'B', 2:'C'};
-        var productAreaTranslation = {
-                0:'Policies', 1:'Billing',
-                2:'Claims', 3:'Reports'
-            };
 
         for (var clientType in result){
             if (result.hasOwnProperty(clientType)){
@@ -192,26 +223,8 @@ function AppViewModel(){
                     if (clientTypeData.hasOwnProperty(clientDatum)){
 
                         var client = clientTypeData[clientDatum];
-
-                        if(client.client===0){
-                            self.clientMaxCounter.A(self.clientMaxCounter.A()+1)
-                        }else if(client.client===1){
-                            self.clientMaxCounter.B(self.clientMaxCounter.B()+1)
-                        }else if(client.client===2){
-                            self.clientMaxCounter.C(self.clientMaxCounter.C()+1)
-                        }
-
-                        self.clientData.push(
-                            new Client(
-                                client.title,
-                                client.description,
-                                clientTranslation[client.client],
-                                client.priority,
-                                client.target_date,
-                                client.ticket_url,
-                                productAreaTranslation[client.product_area]
-                            )
-                        );
+                        self.incrementClientCounter(client.client);
+                        self.addNewClient(client);
                     }
                 }
             }
