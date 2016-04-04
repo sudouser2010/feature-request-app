@@ -89,7 +89,7 @@ function AppViewModel(){
     self.feedbackModal = new FeedbackModal();
 
     self.maxPriority = ko.computed(function() {
-        var newMax = 1;
+        var newMax;
 
         if(self.selectedClient()===0){
             newMax = self.clientMaxCounter.A();
