@@ -17,7 +17,7 @@ To Do:
     -on FE verify api works ++
     -display errors in ui++
     -reset form when success++
-    -when data is validated, backend needs to verify priority is n or less.
+    -when data is validated, backend needs to verify priority is n or less.++
     -use api to populate app with data when app loads
     -use populated data to render table on rightside of app
     -when user creates feature request, that feature request data is also save to the view model's data
