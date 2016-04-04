@@ -20,6 +20,14 @@ function Client(title, desc, client, priority, date, url, area){
     self.productArea = area;
 };
 
+function ClientMaxCounter(){
+    var self = this;
+
+    self.A=ko.observable(1);
+    self.B=ko.observable(1);
+    self.C=ko.observable(1);
+};
+
 function FeedbackModal(){
     var self = this;
 
@@ -71,6 +79,25 @@ function AppViewModel(){
     self.api = document.location.origin + "/api/feature-requests/",
     self.clientData = ko.observableArray();
 
+    self.clientMaxCounter = new ClientMaxCounter();
+    self.feedbackModal = new FeedbackModal();
+
+    self.maxPriority = ko.computed(function() {
+        var newMax = 1;
+
+        if(self.selectedClient()===0){
+            newMax = self.clientMaxCounter.A();
+        }else if(self.selectedClient()===1){
+            newMax = self.clientMaxCounter.B();
+        }else if(self.selectedClient()===2){
+            newMax = self.clientMaxCounter.C();
+        }
+
+        self.priority(newMax);
+        return newMax;
+
+    }, self);
+
     self.resetFields = function(){
         self.title("");
         self.description("");
@@ -97,8 +124,6 @@ function AppViewModel(){
     self.setOptionAsDisabled = function(option, item){
         ko.applyBindingsToNode(option, {disable: item.disabled}, item);
     };
-
-    self.feedbackModal = new FeedbackModal();
 
     self.createFeatureRequest = function(){
         var newClientData = {
@@ -129,7 +154,7 @@ function AppViewModel(){
             self.feedbackModal.showModal();
 		})
 
-    }
+    };
 
     self.getFeatureRequests = function(){
 
@@ -152,6 +177,12 @@ function AppViewModel(){
         /*
          * Use results from api to build observable of client data
          */
+        var clientTranslation = {0:'A', 1:'B', 2:'C'};
+        var productAreaTranslation = {
+                0:'Policies', 1:'Billing',
+                2:'Claims', 3:'Reports'
+            };
+
         for (var clientType in result){
             if (result.hasOwnProperty(clientType)){
 
@@ -161,15 +192,24 @@ function AppViewModel(){
                     if (clientTypeData.hasOwnProperty(clientDatum)){
 
                         var client = clientTypeData[clientDatum];
+
+                        if(client.client===0){
+                            self.clientMaxCounter.A(self.clientMaxCounter.A()+1)
+                        }else if(client.client===1){
+                            self.clientMaxCounter.B(self.clientMaxCounter.B()+1)
+                        }else if(client.client===2){
+                            self.clientMaxCounter.C(self.clientMaxCounter.C()+1)
+                        }
+
                         self.clientData.push(
                             new Client(
                                 client.title,
                                 client.description,
-                                client.client,
+                                clientTranslation[client.client],
                                 client.priority,
                                 client.target_date,
                                 client.ticket_url,
-                                client.product_area
+                                productAreaTranslation[client.product_area]
                             )
                         );
                     }
