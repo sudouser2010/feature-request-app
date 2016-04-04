@@ -9,9 +9,6 @@ The purpose of this app is to create and view data on feature requests
 http://216.158.228.203:8100
 
 ###How to deploy with Docker###
-  [Note this assumes git is installed]
-  
-  
 1. Get codebase with git clone <br>
 git clone https://github.com/sudouser2010/feature-request-app.git
 
