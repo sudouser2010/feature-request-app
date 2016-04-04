@@ -18,10 +18,12 @@ To Do:
     -display errors in ui++
     -reset form when success++
     -when data is validated, backend needs to verify priority is n or less.++
-    -use api to populate app with data when app loads
-    -use populated data to render table on rightside of app
-    -when user creates feature request, that feature request data is also save to the view model's data
-
+    -use api to populate app with data when app loads ++
+    -use populated data to render table on rightside of app ++
+    -don't create drop down filter on right side. It's not needed anymore++
+        -it's best to see all of the feature request types
+    -deploy demo on server
+    -update readme
 
 
 side notes:

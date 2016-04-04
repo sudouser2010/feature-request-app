@@ -13,7 +13,6 @@ Assumptions:
     There are only A, B, and C clients
 
 
-
 ------------------------------------------------------------------Round 2
 Approach to rendering form:
     option1: [favors Django's paradigm]
