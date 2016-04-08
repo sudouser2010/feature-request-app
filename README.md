@@ -5,9 +5,6 @@ The purpose of this app is to create and view data on feature requests
 ###Layout of App###
 ![alt tag](https://github.com/sudouser2010/feature-request-app/blob/master/layout.png)
 
-###Demo of App###
-http://216.158.228.203:8100
-
 ###Interactive Api of Feature Requests###
 http://216.158.228.203:8100/api/feature-requests/
 
